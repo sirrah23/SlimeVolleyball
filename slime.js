@@ -2,6 +2,7 @@ function Slime(x, y, color, side){
   this.x = x;
   this.y = y;
   this.side = side;
+  this.speed = 8;
   this.diameter = 100;
   this.color = color;
 
@@ -13,7 +14,7 @@ function Slime(x, y, color, side){
   }
 
   this.moveLeft = function(net){
-    this.x -=8;
+    this.x -= this.speed;
     if (this.side == "LEFT"){
       if (this.x - this.diameter/2 < 0){
         this.x = this.diameter/2;
@@ -25,8 +26,16 @@ function Slime(x, y, color, side){
     }
   }
 
-  this.moveRight = function(){
-    //TODO: Fix this to be like moveLeft(...)
-    this.x +=8;
+  this.moveRight = function(net){
+    this.x += this.speed;
+    if (this.side == "LEFT"){
+      if ((this.x + this.diameter/2) > (net.x)){
+        this.x = net.x - this.diameter/2;
+      }
+    } else{
+      if (this.x + this.diameter/2 > width){
+        this.x = width-this.diameter/2;
+      }
+    }
   }
 }
