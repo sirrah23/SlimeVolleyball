@@ -6,7 +6,10 @@ function Ball(){
   this.width = 35;
 
   this.show = function(){
+      push()
+      fill(244, 244, 66);
       ellipse(this.x, this.y, this.width);
+      pop();
   }
 
   this.toss = function(){

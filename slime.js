@@ -10,9 +10,32 @@ function Slime(x, y, color, side, net){
   this.jumping = false;
 
   this.show = function(){
+    if (this.side == "LEFT"){
+        this.showLeft();
+    } else {
+        this.showRight();
+    }
+  }
+
+  this.showRight = function(){
     push();
     fill(this.color.x, this.color.y, this.color.z);
     arc(this.x, this.y, this.width, this.width, PI, -PI, CHORD);
+    fill(255);
+    ellipse(this.x-this.width/3, this.y-this.width/4, 15);
+    fill(0);
+    ellipse(this.x-this.width/3, this.y-this.width/4, 5);
+    pop();
+  }
+
+  this.showLeft = function(){
+    push();
+    fill(this.color.x, this.color.y, this.color.z);
+    arc(this.x, this.y, this.width, this.width, PI, -PI, CHORD);
+    fill(255);
+    ellipse(this.x+this.width/3, this.y-this.width/4, 15);
+    fill(0);
+    ellipse(this.x+this.width/3, this.y-this.width/4, 5);
     pop();
   }
 
