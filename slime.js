@@ -7,6 +7,7 @@ function Slime(x, y, color, side, net){
   this.xspeed = 0;
   this.yspeed = 0;
   this.diameter = 100;
+  this.jumping = false;
 
   this.show = function(){
     push();
@@ -55,15 +56,19 @@ function Slime(x, y, color, side, net){
   }
 
   this.jump = function(){
-    this.yspeed = 20;
+    if (!this.jumping){
+      this.jumping = true;
+      this.yspeed = 20;
+    }
   }
 
   this.applyGravity = function(){
     if (this.y < height)
-      this.yspeed -=5;
+      this.yspeed -=1;
     else{
       // TODO: Move to check boundary?
       this.y = height;
+      this.jumping = false; // reached the ground!!!
     }
   }
 

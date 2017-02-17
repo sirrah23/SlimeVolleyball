@@ -29,6 +29,7 @@ function draw(){
   if (keyIsDown(UP_ARROW)){
     p2.jump();
   }
+  ellipse(width/2, height/2, 35, 35);
   p1.move();
   p2.move();
   p1.show();
