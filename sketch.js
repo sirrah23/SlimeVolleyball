@@ -1,5 +1,6 @@
 var p1;
 var p2;
+var ball;
 var net;
 
 function setup(){
@@ -7,6 +8,7 @@ function setup(){
   net = new Net();
   p1 = new Slime(200, height, createVector(255, 0, 0), "LEFT", net);
   p2 = new Slime(width-200, height, createVector(0, 255, 0), "RIGHT", net);
+  ball = new Ball();
 }
 
 function draw(){
@@ -29,9 +31,10 @@ function draw(){
   if (keyIsDown(UP_ARROW)){
     p2.jump();
   }
-  ellipse(width/2, height/2, 35, 35);
   p1.move();
   p2.move();
+  ball.move();
+  ball.show()
   p1.show();
   p2.show();
   net.show();
