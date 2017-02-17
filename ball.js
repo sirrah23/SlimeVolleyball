@@ -26,6 +26,32 @@ function Ball(){
     this.yspeed +=0.5;
     this.x += this.xspeed;
     this.y += this.yspeed;
+    this.wallCheck();
   }
 
+  this.wallCheck = function(){
+    if (this.x < 0 || this.x > width){
+      this.xspeed *= -1;
+      // this.yspeed = -15;
+    }
+  }
+
+  this.collision = function(other){
+    var distance = dist(this.x, this.y, other.x, other.y);
+    var sum_radii = this.width/2 + other.width/2;
+    return distance < sum_radii;
+  }
+
+  this.hitChange = function(other){
+    this.yspeed = -15;
+    if (this.x < other.x) { //hit left side of object, go left
+      this.xspeed = -5;
+    }
+    else if (this.x > other.x) { //hit right side of object, go right
+      this.xspeed = 5;
+    }
+    else{ // hit center, go up
+      this.xspeed = 0;
+    }
+  }
 }

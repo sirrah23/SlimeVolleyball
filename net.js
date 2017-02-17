@@ -7,4 +7,5 @@ function Net(){
   this.show = function(){
     rect(this.x-this.width/2, this.y, this.width, this.length);
   }
+  
 }

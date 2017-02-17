@@ -6,25 +6,25 @@ function Slime(x, y, color, side, net){
   this.net = net;   // The in-game net object
   this.xspeed = 0;
   this.yspeed = 0;
-  this.diameter = 100;
+  this.width = 100;
   this.jumping = false;
 
   this.show = function(){
     push();
     fill(this.color.x, this.color.y, this.color.z);
-    arc(this.x, this.y, this.diameter, this.diameter, PI, -PI, CHORD);
+    arc(this.x, this.y, this.width, this.width, PI, -PI, CHORD);
     pop();
   }
 
   // Check left side of slime for collisions
   this.checkLeft = function(){
     if (this.side == "LEFT"){
-      if (this.x - this.diameter/2 < 0){
-        this.x = this.diameter/2;
+      if (this.x - this.width/2 < 0){
+        this.x = this.width/2;
       }
     } else {
-      if ((this.x - (this.diameter/2)) < (this.net.x)){
-        this.x = this.net.x + this.diameter/2;
+      if ((this.x - (this.width/2)) < (this.net.x)){
+        this.x = this.net.x + this.width/2;
       }
     }
   }
@@ -32,12 +32,12 @@ function Slime(x, y, color, side, net){
   // Check right side of slime for collisions
   this.checkRight = function(){
     if (this.side == "LEFT"){
-      if ((this.x + this.diameter/2) > (this.net.x)){
-        this.x = this.net.x - this.diameter/2;
+      if ((this.x + this.width/2) > (this.net.x)){
+        this.x = this.net.x - this.width/2;
       }
     } else{
-      if (this.x + this.diameter/2 > width){
-        this.x = width-this.diameter/2;
+      if (this.x + this.width/2 > width){
+        this.x = width-this.width/2;
       }
     }
   }

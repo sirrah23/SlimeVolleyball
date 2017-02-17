@@ -38,4 +38,19 @@ function draw(){
   p1.show();
   p2.show();
   net.show();
+  if (ball.collision(p1)){
+    ball.hitChange(p1);
+  }
+  if (ball.collision(p2)){
+    ball.hitChange(p2);
+  }
+}
+
+function keyReleased(){
+  if(keyCode == 65 || keyCode == 68){
+    p1.stopRun()
+  }
+  if(keyCode == LEFT_ARROW || keyCode == RIGHT_ARROW){
+    p2.stopRun()
+  }
 }
